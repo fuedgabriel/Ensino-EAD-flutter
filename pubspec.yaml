@@ -23,9 +23,11 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  carousel_slider: ^1.4.1
-  slimy_card: ^1.0.2
-  video_box: ^0.11.1
+  carousel_slider: ^1.4.1 #slide automático
+  slimy_card: ^1.0.2 #card bonito
+  flutter_speed_dial: ^1.2.5 # floating button
+  open_file: ^3.0.1 # abrir arquivo
+  url_launcher: ^5.4.2
 
 
 dev_dependencies:
@@ -40,6 +42,7 @@ dev_dependencies:
 flutter:
   assets:
     - src/image/logo.png
+    - src/image/enem.png
     - src/image/socrates.png
     - src/image/logo-horizontal.png
     - src/image/redacao.png

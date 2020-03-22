@@ -50,27 +50,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.14.11"
-  connectivity:
-    dependency: transitive
-    description:
-      name: connectivity
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.8+2"
-  connectivity_macos:
-    dependency: transitive
-    description:
-      name: connectivity_macos
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.0+2"
-  connectivity_platform_interface:
-    dependency: transitive
-    description:
-      name: connectivity_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.3"
   convert:
     dependency: transitive
     description:
@@ -89,6 +68,13 @@ packages:
     dependency: "direct main"
     description:
       name: cupertino_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.3"
+  ffi:
+    dependency: transitive
+    description:
+      name: ffi
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.3"
@@ -111,13 +97,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_mobx:
-    dependency: transitive
+  flutter_speed_dial:
+    dependency: "direct main"
     description:
-      name: flutter_mobx
+      name: flutter_speed_dial
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.1"
+    version: "1.2.5"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -149,13 +135,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.8"
-  mobx:
-    dependency: transitive
+  open_file:
+    dependency: "direct main"
     description:
-      name: mobx
+      name: open_file
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2+2"
+    version: "3.0.1"
   path:
     dependency: transitive
     description:
@@ -191,13 +177,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
-  sensors:
-    dependency: transitive
-    description:
-      name: sensors
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.1+10"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -259,6 +238,34 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
+  url_launcher:
+    dependency: "direct main"
+    description:
+      name: url_launcher
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.4.2"
+  url_launcher_macos:
+    dependency: transitive
+    description:
+      name: url_launcher_macos
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1+4"
+  url_launcher_platform_interface:
+    dependency: transitive
+    description:
+      name: url_launcher_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.6"
+  url_launcher_web:
+    dependency: transitive
+    description:
+      name: url_launcher_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1+1"
   vector_math:
     dependency: transitive
     description:
@@ -266,34 +273,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.8"
-  video_box:
-    dependency: "direct main"
-    description:
-      name: video_box
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.11.1"
-  video_player:
-    dependency: transitive
-    description:
-      name: video_player
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.10.8+1"
-  video_player_platform_interface:
-    dependency: transitive
-    description:
-      name: video_player_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.5"
-  video_player_web:
-    dependency: transitive
-    description:
-      name: video_player_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.2+1"
   xml:
     dependency: transitive
     description:
@@ -302,5 +281,5 @@ packages:
     source: hosted
     version: "3.5.0"
 sdks:
-  dart: ">=2.7.0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.5 <2.0.0"
+  dart: ">=2.6.0 <3.0.0"
+  flutter: ">=1.12.8 <2.0.0"
