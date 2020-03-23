@@ -7,19 +7,67 @@ class Matter extends StatefulWidget {
 }
 
 class _MatterState extends State<Matter> {
-  List<String> title = ['A apologia de sócrates', 'A morte', 'aveado'];
-  List<String> description = ['Documentário representado a morte de sócrates', 'O que a morte de sócrates ocasionou', 'Tú é né'];
+  List<String> title = ['O Julgamento de Sócrates', 'Futebol Filosófico', 'Lista de exercícios'];
+  List<String> description = ['Cena retirada do filme: "Sócrates"\nLivro: "Apologia de Sócrates"',
+    'Disputa de futebol entre os filósofos da Alemanha e da Grécia.', 'O Surgimento da sociologia.'];
+  List<String> document = ['https://www.youtube.com/watch?v=m8uEPvl-l5M','https://www.youtube.com/watch?v=2OrcQIweUoQ', 'https://drive.google.com/open?id=1ntdXE_QmehtqbQjiEsKm_wOOEaoYds7P'];
+  List<String> icon = ['youtubepng', 'youtubepng', 'pdf'];
+
+  TextEditingController _textFieldController = TextEditingController();
+
+  _displayDialog(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16.0),
+              borderSide: BorderSide(color: Colors.deepPurple),
+              gapPadding: 5
+            ),
+            elevation: 10,
+            title: Text('Digite sua dúvida'),
+            content: TextField(
+              controller: _textFieldController,
+              decoration: InputDecoration(
+                hintText: "",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+              showCursor: true,
+              enableSuggestions: true,
+              autocorrect: true,
+
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: new Text('Enviar'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              FlatButton(
+                child: new Text('Voltar'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    _launchURL() async {
-      const url = 'http://docs.google.com/viewer?url=http://www.pdf995.com/samples/pdf.pdf';
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    }
+
 
     return Scaffold(
         appBar: AppBar(
@@ -68,7 +116,7 @@ class _MatterState extends State<Matter> {
                                           color: Color.fromARGB(255, 48, 48, 54)
                                       ),),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -83,16 +131,18 @@ class _MatterState extends State<Matter> {
                                     topLeft: Radius.circular(5)
                                 ),
                                 image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage("https://is2-ssl.mzstatic.com/image/thumb/Video2/v4/e1/69/8b/e1698bc0-c23d-2424-40b7-527864c94a8e/pr_source.lsr/268x0w.png")
+                                    fit: BoxFit.contain,
+                                    image: AssetImage("src/image/"+icon[index]+".png")
                                 )
                             ),
                           ),
-                          onTap: () async{
-                            _launchURL();
+                          onTap: () {
+                            _launchURL(document[index]);
                           },
-                        )
-
+                          onLongPress: (){
+                            _displayDialog(context);
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -102,4 +152,3 @@ class _MatterState extends State<Matter> {
     );
   }
 }
-

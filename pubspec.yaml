@@ -27,7 +27,9 @@ dependencies:
   slimy_card: ^1.0.2 #card bonito
   flutter_speed_dial: ^1.2.5 # floating button
   open_file: ^3.0.1 # abrir arquivo
-  url_launcher: ^5.4.2
+  url_launcher: ^5.4.2 # abrir url
+
+
 
 
 dev_dependencies:
@@ -51,6 +53,9 @@ flutter:
     - src/image/medicina.png
     - src/image/biologia.png
     - src/image/fisica.png
+    - src/image/pdf.png
+    - src/image/youtubepng.png
+    - assets/
 
 
   # The following line ensures that the Material Icons font is
