@@ -28,6 +28,7 @@ dependencies:
   flutter_speed_dial: ^1.2.5 # floating button
   open_file: ^3.0.1 # abrir arquivo
   url_launcher: ^5.4.2 # abrir url
+  achievement_view: ^0.2.0 #acertou a questão
 
 
 

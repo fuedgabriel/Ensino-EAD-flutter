@@ -64,9 +64,9 @@ class _MenuWidgetState extends State<MenuWidget> {
 
           ListTile(
             leading: Icon(Icons.favorite),
-            title: Text('Meus animes'),
+            title: Text('PErguntas'),
             onTap: () {
-              if (widget.page == 'Favoritos') {
+              if (widget.page == 'Questions') {
                 Navigator.pop(context);
               }
               else{
@@ -76,7 +76,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 }
                 else{
                   Navigator.pop(context);
-                  Navigator.of(context).pushReplacementNamed('/Favoritos');
+                  Navigator.of(context).pushReplacementNamed('/Questions');
                 }
               }
             },
