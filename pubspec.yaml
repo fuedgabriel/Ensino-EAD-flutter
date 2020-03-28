@@ -58,9 +58,19 @@ flutter:
     - src/image/fisica.png
     - src/image/pdf.png
     - src/image/youtubepng.png
-    - assets/
-
-
+    - src/image/matters/0.png
+    - src/image/matters/1.png
+    - src/image/matters/2.png
+    - src/image/matters/3.png
+    - src/image/matters/4.png
+    - src/image/matters/5.png
+    - src/image/matters/6.png
+    - src/image/matters/7.png
+    - src/image/matters/8.png
+    - src/image/matters/9.png
+    - src/image/matters/10.png
+    - src/image/matters/11.png
+    - src/image/matters/12.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

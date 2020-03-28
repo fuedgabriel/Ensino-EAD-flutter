@@ -64,15 +64,15 @@ class _MenuWidgetState extends State<MenuWidget> {
 
           ListTile(
             leading: Icon(Icons.favorite),
-            title: Text('PErguntas'),
+            title: Text('Perguntas'),
             onTap: () {
-              if (widget.page == 'Questions') {
+              if (widget.page == 'Questions and Answers') {
                 Navigator.pop(context);
               }
               else{
-                if(widget.page == 'Inicio'){
+                if(widget.page == 'Home'){
                   Navigator.pop(context);
-                  Navigator.of(context).pushNamed('/Favoritos');
+                  Navigator.of(context).pushNamed('/Questions');
                 }
                 else{
                   Navigator.pop(context);

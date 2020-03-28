@@ -10,7 +10,7 @@ class _Lessons extends State<Lessons> {
   @override
   Widget build(BuildContext context) {
     List<String> title = ['Filosofia', 'Portguês', 'Redação', 'Medicina', 'Biologia', 'Matemática','Física'];
-    List<String> img = ['socrates','portugues','redacao','medicina','biologia','matematica','fisica'];
+    List<String> img = ['Filosofia','Português','Redação','Medicina','Biologia','Matemática','Física'];
     List<String> state = ['Novas tarefas', 'Concluido', 'Novas tarefas', 'Concluido', 'Concluido', 'Concluido', 'Concluido', ];
 
 

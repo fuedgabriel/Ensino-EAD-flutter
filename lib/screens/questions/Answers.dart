@@ -1,11 +1,16 @@
-
+//widget
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:achievement_view/achievement_view.dart';
+//request
 import 'package:imperium/request/request.dart';
+import 'package:imperium/request/json/QuestionsJson.dart';
+import 'dart:convert';
+
 class Answers extends StatefulWidget {
   String Matter;
-  Answers(this.Matter);
+  int id;
+  Answers(this.Matter, this.id);
   @override
   _Answers createState() => _Answers();
 }
@@ -13,6 +18,18 @@ enum SingingCharacter { A, B, C, D, E, F }
 
 class _Answers extends State<Answers> {
   SingingCharacter _character;
+  var list = new List<QuestionsJson>();
+  var animes = new List<QuestionsJson>();
+
+//  _Answers() {
+//    print(widget.Matter);
+//    API.getQuestions(0).then((response){
+//      setState(() {
+//        Iterable lista = json.decode(response.body);
+//        list = lista.map((model) => QuestionsJson.fromJson(model)).toList();
+//      });
+//    });
+//  }
 
   String Questions = 'Quais são os elemtos constitutivos de um Estado?';
   List<String> anwser = ['Clima, Geografia e localização', 'Povo Território e soberania', 'Voto, democracia e cidadania', 'Nação, cultura e idioma', 'Fidelidade, patriotismo, e governo totalitário'];
@@ -23,9 +40,7 @@ class _Answers extends State<Answers> {
         backgroundColor: HexColor.fromHex('#48006d'),
         elevation: 0,
         title: Text(widget.Matter),
-        actions: <Widget>[
 
-        ],
       ),
       body: ListView(
         padding: EdgeInsets.only(top: 10, right: 10,left: 10),
@@ -118,7 +133,6 @@ class _Answers extends State<Answers> {
               borderRadius: BorderRadius.circular(15)
             ),
             onPressed: (){
-              POST.postcreate('Quais são os elemtos constitutivos de um Estado?', 1, 0);
               AchievementView(
                   context,
                   title: "Parabéns!",

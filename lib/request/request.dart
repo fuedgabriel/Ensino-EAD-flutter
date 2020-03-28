@@ -1,5 +1,3 @@
-import 'package:imperium/screens/Matter.dart';
-
 import 'json/QuestionsJson.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -14,6 +12,12 @@ class API {
   static Future getMatters() async{
     String url;
     url = baseUrl + "/api/Matter";
+    return await http.get(url);
+  }
+  static Future getQuestions(id) async{
+    print(id);
+    String url;
+    url = baseUrl + "/api/Questions/search?matter="+id.toString();
     return await http.get(url);
   }
 }
@@ -31,13 +35,13 @@ class ListJson {
 }
 class POST
 {
-  static Future<http.Response> postcreate(nome, Correct, Matter) async {
+  static Future<http.Response> postcreate(nome, Correct, Matter, QuestionA, QuestionB, QuestionC, QuestionD, QuestionE) async {
     var url = baseUrl+'/api/Questions';
     Map data = {
       'Title': '$nome',
       'Correct': '$Correct',
       'Matter': '$Matter',
-      'Answers': ListJson.Tag('Clima, Geografia e localização.', 'Povo Território e soberania.', 'Voto, democracia e cidadania', 'Nação, cultura e idioma', 'Fidelidade, patriotismo, e governo totalitário')
+      'Answers': ListJson.Tag(QuestionA, QuestionB, QuestionC, QuestionD, QuestionE)
     };
     var body = json.encode(data);
     return await http.post(url,
