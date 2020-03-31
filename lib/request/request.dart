@@ -22,7 +22,7 @@ class API {
   }
 }
 class ListJson {
-  static Tag(questions1, questions2 ,questions3,questions4,questions5){
+  static tag(questions1, questions2 ,questions3,questions4,questions5){
     Map toJson() => {
       '1': '$questions1',
       '2': '$questions2',
@@ -35,13 +35,13 @@ class ListJson {
 }
 class POST
 {
-  static Future<http.Response> postcreate(nome, Correct, Matter, QuestionA, QuestionB, QuestionC, QuestionD, QuestionE) async {
+  static Future<http.Response> postcreate(nome, correct, matter, questionA, questionB, questionC, questionD, questionE) async {
     var url = baseUrl+'/api/Questions';
     Map data = {
       'Title': '$nome',
-      'Correct': '$Correct',
-      'Matter': '$Matter',
-      'Answers': ListJson.Tag(QuestionA, QuestionB, QuestionC, QuestionD, QuestionE)
+      'Correct': '$correct',
+      'Matter': '$matter',
+      'Answers': ListJson.tag(questionA, questionB, questionC, questionD, questionE)
     };
     var body = json.encode(data);
     return await http.post(url,

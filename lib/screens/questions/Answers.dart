@@ -7,39 +7,49 @@ import 'package:imperium/request/request.dart';
 import 'package:imperium/request/json/QuestionsJson.dart';
 import 'dart:convert';
 
-class Answers extends StatefulWidget {
-  String Matter;
-  int id;
-  Answers(this.Matter, this.id);
+// ignore: must_be_immutable, camel_case_types
+class answers extends StatefulWidget {
+  String matter;
+  int id =0;
+  answers(this.matter, this.id);
   @override
   _Answers createState() => _Answers();
 }
 enum SingingCharacter { A, B, C, D, E, F }
 
-class _Answers extends State<Answers> {
+class _Answers extends State<answers> {
+  int a;
   SingingCharacter _character;
   var list = new List<QuestionsJson>();
   var animes = new List<QuestionsJson>();
 
-//  _Answers() {
-//    print(widget.Matter);
-//    API.getQuestions(0).then((response){
-//      setState(() {
-//        Iterable lista = json.decode(response.body);
-//        list = lista.map((model) => QuestionsJson.fromJson(model)).toList();
-//      });
-//    });
-//  }
+  getQuestions() async {
+    print(widget.id);
+    API.getQuestions(widget.id).then((response) {
+      setState(() {
+        Iterable lista = json.decode(response.body);
+        list = lista.map((model) => QuestionsJson.fromJson(model)).toList();
+      });
+    });
+  }
 
   String Questions = 'Quais são os elemtos constitutivos de um Estado?';
   List<String> anwser = ['Clima, Geografia e localização', 'Povo Território e soberania', 'Voto, democracia e cidadania', 'Nação, cultura e idioma', 'Fidelidade, patriotismo, e governo totalitário'];
   @override
   Widget build(BuildContext context) {
+    if(a == 1){
+
+    }else{
+      a = 1;
+      getQuestions();
+    }
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HexColor.fromHex('#48006d'),
         elevation: 0,
-        title: Text(widget.Matter),
+        title: Text(widget.matter),
 
       ),
       body: ListView(
@@ -82,7 +92,7 @@ class _Answers extends State<Answers> {
             width: 180,
             child: Center(
               child: Text(
-                Questions,
+                list[0].title,
                 style: TextStyle(
                     fontWeight: FontWeight.w400,
                     color: Colors.white
@@ -97,17 +107,16 @@ class _Answers extends State<Answers> {
               elevation: 5,
               child: Padding(
                   padding: EdgeInsets.all(5),
-                  child: ListView.builder(
-                    itemCount: anwser.length,
-                    itemBuilder: (context, index){
-                      return ListTile(
-                        title: Text(anwser[index],
-                        style: TextStyle(
-                          fontSize: 13
-                        ),),
+                  child: ListView(
+                    children: <Widget>[
+                      ListTile(
+                        title: Text(list[0].answers[0].s1,
+                          style: TextStyle(
+                              fontSize: 13
+                          ),),
                         leading: Radio(
                           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          value: SingingCharacter.values[index],
+                          value: SingingCharacter.values[0],
                           groupValue: _character,
                           onChanged: (SingingCharacter value) {
                             setState(() {
@@ -115,8 +124,72 @@ class _Answers extends State<Answers> {
                             });
                           },
                         ),
-                      );
-                    },
+                      ),
+                      ListTile(
+                        title: Text(list[0].answers[0].s2,
+                          style: TextStyle(
+                              fontSize: 13
+                          ),),
+                        leading: Radio(
+                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          value: SingingCharacter.values[1],
+                          groupValue: _character,
+                          onChanged: (SingingCharacter value) {
+                            setState(() {
+                              _character = value;
+                            });
+                          },
+                        ),
+                      ),
+                      ListTile(
+                        title: Text(list[0].answers[0].s3,
+                          style: TextStyle(
+                              fontSize: 13
+                          ),),
+                        leading: Radio(
+                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          value: SingingCharacter.values[2],
+                          groupValue: _character,
+                          onChanged: (SingingCharacter value) {
+                            setState(() {
+                              _character = value;
+                            });
+                          },
+                        ),
+                      ),
+                      ListTile(
+                        title: Text(list[0].answers[0].s4,
+                          style: TextStyle(
+                              fontSize: 13
+                          ),),
+                        leading: Radio(
+                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          value: SingingCharacter.values[3],
+                          groupValue: _character,
+                          onChanged: (SingingCharacter value) {
+                            setState(() {
+                              _character = value;
+                            });
+                          },
+                        ),
+                      ),
+                      ListTile(
+                        title: Text(list[0].answers[0].s5,
+                          style: TextStyle(
+                              fontSize: 13
+                          ),),
+                        leading: Radio(
+                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          value: SingingCharacter.values[4],
+                          groupValue: _character,
+                          onChanged: (SingingCharacter value) {
+                            setState(() {
+                              _character = value;
+                            });
+                          },
+                        ),
+                      )
+                    ],
                   )
               ),
               shape: RoundedRectangleBorder(
@@ -133,7 +206,8 @@ class _Answers extends State<Answers> {
               borderRadius: BorderRadius.circular(15)
             ),
             onPressed: (){
-              AchievementView(
+              if((_character.index+1) == list[0].correct){
+                AchievementView(
                   context,
                   title: "Parabéns!",
                   subTitle: "A resposta está correta",
@@ -141,18 +215,26 @@ class _Answers extends State<Answers> {
                   borderRadius: 5.0,
                   color: Colors.green,
                   textStyleTitle: TextStyle(),
-                  //textStyleSubTitle: TextStyle(),
                   alignment: Alignment.topCenter,
                   duration: Duration(seconds: 2),
                   isCircle: true,
-//                  listener: (status){
-//                    print(status);
-//                    //AchievementState.opening
-//                    //AchievementState.open
-//                    //AchievementState.closing
-//                    //AchievementState.closed
-//                  }
-              )..show();
+                )..show();
+              }
+              else{
+                AchievementView(
+                  context,
+                  title: "Poxa não foi dessa vez!",
+                  subTitle: "Tente novamente:",
+                  icon: Icon(Icons.mood_bad, color: Colors.white,),
+                  borderRadius: 5.0,
+                  color: Colors.red,
+                  textStyleTitle: TextStyle(),
+                  alignment: Alignment.topCenter,
+                  duration: Duration(seconds: 2),
+                  isCircle: true,
+                )..show();
+              }
+
 
             },
             child: Text("Próximo"),

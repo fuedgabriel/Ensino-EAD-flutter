@@ -56,46 +56,49 @@ class _Questions extends State<Questions> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0)
                       ),
-                      child: ListView(
-                        children: <Widget>[
-                          Container(
-                            height: 90,
-                            child: GestureDetector(
-                              child: Image(
+                      child: Container(
+                        height: 90,
+                        child: GestureDetector(
+                          child: ListView(
+                            physics: NeverScrollableScrollPhysics(),
+                            padding: EdgeInsets.only(top: 10),
+                            children: <Widget>[
+                              Image(
                                 image: AssetImage('src/image/matters/'+(list[index].id).toString()+'.png'),
-                                fit: BoxFit.contain,
+                                fit: BoxFit.scaleDown,
+                                height: 80,
                               ),
-                              onTap: (){
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Answers(list[index].title, 0)
-                                    )
-                                );
-                              },
-                              onLongPress: (){
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => AnswersAdd(
-                                          list[index].title,
-                                          list[index].id
-                                        )
-                                    )
-                                );
-                              },
-                            ),
+                              Padding(padding: EdgeInsets.only(top: 4),),
+                              Center(
+                                child: Text(
+                                  list[index].title,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w900
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
-                          Center(
-                            child: Text(
-                              list[index].title,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w900
-                              ),
-                            ),
-                          )
-
-                        ],
+                          onTap: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => answers(list[index].title, 0)
+                                )
+                            );
+                          },
+                          onLongPress: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => answersAdd(
+                                        list[index].title,
+                                        list[index].id
+                                    )
+                                )
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),

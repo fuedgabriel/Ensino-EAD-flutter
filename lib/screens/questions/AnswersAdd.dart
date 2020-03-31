@@ -2,16 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:imperium/request/request.dart';
 import 'package:achievement_view/achievement_view.dart';
-class AnswersAdd extends StatefulWidget {
-  String Matter;
+// ignore: camel_case_types, must_be_immutable
+class answersAdd extends StatefulWidget {
+  String matter;
 
   int id;
-  AnswersAdd(this.Matter, this.id);
+  answersAdd(this.matter, this.id);
   @override
   _AnswersAdd createState() => _AnswersAdd();
 }
 
-class _AnswersAdd extends State<AnswersAdd> {
+class _AnswersAdd extends State<answersAdd> {
   int id;
   String select = "Selecione a resposta correta";
   TextEditingController _textFieldControllerQuestions = TextEditingController();
@@ -26,7 +27,7 @@ class _AnswersAdd extends State<AnswersAdd> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.Matter),
+        title: Text(widget.matter),
         elevation: 0
       ),
       body: ListView(
@@ -245,12 +246,13 @@ class _AnswersAdd extends State<AnswersAdd> {
 
                 },
                 child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text('Enviar pergunta ',
                       style: TextStyle(
                           color: Colors.black),
                     ),
-                    Padding(padding: EdgeInsets.only(left: 20)),
                     Icon(Icons.send)
                   ],
                 )

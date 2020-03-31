@@ -31,7 +31,7 @@ class _Lessons extends State<Lessons> {
             cor = Colors.yellowAccent;
           }
 
-          var ListMatters = ListTile(
+          var listMatters = ListTile(
             contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
             leading: Container(
               padding: EdgeInsets.only(right: 12.0),
@@ -72,7 +72,7 @@ class _Lessons extends State<Lessons> {
             margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
             child: Container(
               decoration: BoxDecoration(color: Colors.white60),
-              child: ListMatters,
+              child: listMatters,
             ),
           );
         }
