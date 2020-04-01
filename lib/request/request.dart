@@ -17,7 +17,7 @@ class API {
   static Future getQuestions(id) async{
     print(id);
     String url;
-    url = baseUrl + "/api/Questions/search?matter="+id.toString();
+    url = baseUrl + "/api/Questions/search?matter="+id.toString()+"|0";
     return await http.get(url);
   }
 }

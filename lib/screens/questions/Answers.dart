@@ -18,38 +18,51 @@ class answers extends StatefulWidget {
 enum SingingCharacter { A, B, C, D, E, F }
 
 class _Answers extends State<answers> {
+  String TitlePage = 'Carregando';
+  String title = 'Carregando';
+  String A = 'Carregando';
+  String B = 'Carregando';
+  String C = 'Carregando';
+  String D = 'Carregando';
+  String E = 'Carregando';
+  int CC;
+
   int a;
   SingingCharacter _character;
   var list = new List<QuestionsJson>();
   var animes = new List<QuestionsJson>();
 
   getQuestions() async {
-    print(widget.id);
-    API.getQuestions(widget.id).then((response) {
-      setState(() {
-        Iterable lista = json.decode(response.body);
-        list = lista.map((model) => QuestionsJson.fromJson(model)).toList();
+    Future.delayed(const Duration(milliseconds: 1), () {
+      API.getQuestions(widget.id).then((response) {
+        setState(() {
+
+          Iterable lista = json.decode(response.body);
+          list = lista.map((model) => QuestionsJson.fromJson(model)).toList();
+          title = list[0].title;
+          A = list[0].answers[0].s1;
+          B = list[0].answers[0].s2;
+          C = list[0].answers[0].s3;
+          D = list[0].answers[0].s4;
+          E = list[0].answers[0].s5;
+          CC = list[0].correct;
+          TitlePage = widget.matter;
+
+        });
       });
     });
   }
+  _Answers(){
+    getQuestions();
+  }
 
-  String Questions = 'Quais são os elemtos constitutivos de um Estado?';
-  List<String> anwser = ['Clima, Geografia e localização', 'Povo Território e soberania', 'Voto, democracia e cidadania', 'Nação, cultura e idioma', 'Fidelidade, patriotismo, e governo totalitário'];
   @override
   Widget build(BuildContext context) {
-    if(a == 1){
-
-    }else{
-      a = 1;
-      getQuestions();
-    }
-
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HexColor.fromHex('#48006d'),
         elevation: 0,
-        title: Text(widget.matter),
+        title: Text(TitlePage),
 
       ),
       body: ListView(
@@ -63,28 +76,79 @@ class _Answers extends State<answers> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)
                 ),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Questão '+Questions.length.toString(),
-                      style: TextStyle(
-                        fontSize: 25,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 6
-                          ..color = Colors.blue[700],
+                child: GestureDetector(
+                  onTap: (){
+                    return showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Card(
+                            margin: EdgeInsets.all(50),
+                            child: GridView.builder(
+                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, crossAxisSpacing: 0,),
+                                itemCount: list.length,
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: (){
+
+                                    },
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10.0),
+                                      ),
+                                      elevation: 50,
+                                      color: Colors.grey[800],
+                                      child: Stack(
+                                        alignment: Alignment.center,
+                                        children: <Widget>[
+                                          Text(
+                                            index.toString(),
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              foreground: Paint()
+                                                ..style = PaintingStyle.stroke
+                                                ..strokeWidth = 6
+                                                ..color = Colors.blue[700],
+                                            ),
+                                          ),
+                                          Text(
+                                            index.toString(),
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.grey[300],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                }
+                            ),
+                          );
+                        });
+                  },
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Questão '+title.length.toString(),
+                        style: TextStyle(
+                          fontSize: 25,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 6
+                            ..color = Colors.blue[700],
+                        ),
                       ),
-                    ),
-                    Text(
-                      'Questão '+Questions.length.toString(),
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.grey[300],
+                      Text(
+                        'Questão '+title.length.toString(),
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.grey[300],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                )
               )
             ),
           ),
@@ -92,7 +156,7 @@ class _Answers extends State<answers> {
             width: 180,
             child: Center(
               child: Text(
-                list[0].title,
+                title,
                 style: TextStyle(
                     fontWeight: FontWeight.w400,
                     color: Colors.white
@@ -110,7 +174,7 @@ class _Answers extends State<answers> {
                   child: ListView(
                     children: <Widget>[
                       ListTile(
-                        title: Text(list[0].answers[0].s1,
+                        title: Text(A,
                           style: TextStyle(
                               fontSize: 13
                           ),),
@@ -126,7 +190,7 @@ class _Answers extends State<answers> {
                         ),
                       ),
                       ListTile(
-                        title: Text(list[0].answers[0].s2,
+                        title: Text(B,
                           style: TextStyle(
                               fontSize: 13
                           ),),
@@ -142,7 +206,7 @@ class _Answers extends State<answers> {
                         ),
                       ),
                       ListTile(
-                        title: Text(list[0].answers[0].s3,
+                        title: Text(C,
                           style: TextStyle(
                               fontSize: 13
                           ),),
@@ -158,7 +222,7 @@ class _Answers extends State<answers> {
                         ),
                       ),
                       ListTile(
-                        title: Text(list[0].answers[0].s4,
+                        title: Text(D,
                           style: TextStyle(
                               fontSize: 13
                           ),),
@@ -174,7 +238,7 @@ class _Answers extends State<answers> {
                         ),
                       ),
                       ListTile(
-                        title: Text(list[0].answers[0].s5,
+                        title: Text(E,
                           style: TextStyle(
                               fontSize: 13
                           ),),
@@ -206,7 +270,7 @@ class _Answers extends State<answers> {
               borderRadius: BorderRadius.circular(15)
             ),
             onPressed: (){
-              if((_character.index+1) == list[0].correct){
+              if((_character.index+1) == CC){
                 AchievementView(
                   context,
                   title: "Parabéns!",
@@ -244,6 +308,7 @@ class _Answers extends State<answers> {
     );
   }
 }
+
 
 
 extension HexColor on Color {
