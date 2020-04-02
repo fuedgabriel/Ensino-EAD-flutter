@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'screens/LoginPage.dart';
+import 'screens/Accounts/LoginPage.dart';
 import 'screens/Home.dart';
-import 'screens/Room.dart';
-import 'screens/Lessons.dart';
-import 'screens/Matter.dart';
+import 'screens/Room/Room.dart';
+import 'screens/Room/Lessons.dart';
 import 'screens/questions/Questions.dart';
+
 void main() => runApp(MyApp());
 extension HexColor on Color {
   /// String is in the format "aabbcc" or "ffaabbcc" with an optional leading "#".
@@ -45,7 +45,6 @@ class MyApp extends StatelessWidget {
         '/Home': (BuildContext context) => Home(),
         '/Room': (BuildContext context) => Room(),
         '/Lessons': (BuildContext context) => Lessons(),
-        '/Matter': (BuildContext context) => Matter(),
         '/Questions': (BuildContext context) => Questions(),
       },
 

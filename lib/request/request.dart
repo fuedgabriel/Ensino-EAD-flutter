@@ -1,23 +1,21 @@
-import 'json/QuestionsJson.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-const baseUrl = "http://192.168.1.70:7844";
+const baseUrl = "http://200.149.49.85:7844";
 
 class API {
-  static Future getAnimes(String id, int page) async{
-    String url;
-    url = baseUrl + "/api/Question/";
-    return await http.get(url);
-  }
   static Future getMatters() async{
     String url;
     url = baseUrl + "/api/Matter";
     return await http.get(url);
   }
   static Future getQuestions(id) async{
-    print(id);
     String url;
-    url = baseUrl + "/api/Questions/search?matter="+id.toString()+"|0";
+    url = baseUrl + "/api/Questions/search?matter="+id.toString();
+    return await http.get(url);
+  }
+  static Future getDocuments(id) async{
+    String url;
+    url = baseUrl +"/api/Documents/search?matter="+id.toString();
     return await http.get(url);
   }
 }
