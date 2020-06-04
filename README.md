@@ -1,4 +1,4 @@
-# imperium
+# Aplicativo para Organizar aulas e perguntas e respostas
 
 Plataforma de ensino
 
